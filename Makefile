@@ -1,3 +1,4 @@
+#MakeFile du TP sur le catalogue
 COMP = g++
 EXEC = Test 
 CFLAGS = -c -Wall
