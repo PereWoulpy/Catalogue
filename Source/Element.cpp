@@ -30,22 +30,22 @@ using namespace std;
 
 /*void Element::Ajouter(Element* lTr)
 {
-	next = lTr;
+    next = lTr;
 }
 */
-Trajet* Element::getTraj()
+const Trajet* Element::getTraj() const
 {
-	return traj;
+    return traj;
 }
 
 void Element::setNext(Element* n) 
 {
-	next = n;
+    next = n;
 }
 
-Element* Element::getNext()
+Element* Element::getNext() const
 {
-	return next;
+    return next;
 }
 
 
@@ -60,7 +60,7 @@ Element::Element ( const Element & unElement )
 } //----- Fin de Element (constructeur de copie)
 
 
-Element::Element (Trajet * tr)
+Element::Element (const Trajet * tr)
 // Algorithme :
 //
 {

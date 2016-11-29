@@ -36,18 +36,22 @@ public:
     //
     // Contrat :
     //
-    void Afficher (); 
+    void Afficher () const;
     // Mode d'emploi : Affiche l'objet TrajetCompose, en affichant chacun des trajets 
     //simples qui le composent.
-    
-    const char* getDepart ();
+
+    const char* getDepart () const;
     // Mode d'emploi : renvoie la ville de départ du trajet complet.
-    
-    const char* getArrivee ();
+
+    const char* getArrivee () const;
     // Mode d'emploi : renvoie la ville d'arrivée du trajet complet.
-    
+
     void Ajouter (Trajet* tr);
     // Ajoute un trajet simple à la fin de la liste.
+
+    bool EstEgal(const Trajet * unTraj) const;
+    // Mode d'emploi : Renvoie vrai si le trajet appelant est egal au trajet
+    // en paramaètre.
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetCompose ( const TrajetCompose & unTrajetCompose );

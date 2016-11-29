@@ -29,21 +29,25 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-const char* TrajetSimple::getDepart ()
+const char* TrajetSimple::getDepart () const
 {
-	return depart;
+    return depart;
 }
 
-const char* TrajetSimple::getArrivee ()
+const char* TrajetSimple::getArrivee () const
 {
-	return arrivee;
+    return arrivee;
 }
 
-void TrajetSimple::Afficher ()
+void TrajetSimple::Afficher () const
 {
-	cout <<"De "<<depart<<" à "<<arrivee<<" en "<<transport;
+    cout <<"De "<<depart<<" à "<<arrivee<<" en "<<transport;
 }
 
+bool TrajetSimple::EstEgal(const Trajet * unTraj) const
+{
+    
+}
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
@@ -59,19 +63,16 @@ TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 TrajetSimple::TrajetSimple (const char* dep, const char* arr, const char* trans)
 // Algorithme :
 //
-{	
+{   
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
 
-arrivee = new char[strlen(arr)+1];
-strcpy(arrivee, arr);
+arrivee = arr;
 
-depart = new char[strlen(dep)+1];
-strcpy(depart, dep);
+depart = dep;
 
-transport = new char[strlen(trans)+1];
-strcpy(transport, trans);
+transport = trans;
 
 } //----- Fin de TrajetSimple
 
@@ -84,9 +85,6 @@ TrajetSimple::~TrajetSimple ( )
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
 
-delete [] depart;
-delete [] arrivee;
-delete [] transport;
 } //----- Fin de ~TrajetSimple
 
 

@@ -28,19 +28,21 @@ class Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
-	virtual void Afficher () = 0; 
+    virtual void Afficher () const = 0;
     // Mode d'emploi : Affiche l'objet Trajet.
     //
     // Contrat : L'affichage tiens compte de la nature de l'objet, composé
     // ou simple. 
     
-    virtual const char* getDepart () = 0;
+    virtual const char* getDepart () const = 0;
     // Mode d'emploi : renvoie la ville de départ du trajet.
     
-    virtual const char* getArrivee () = 0;
+    virtual const char* getArrivee () const = 0;
     // Mode d'emploi : renvoie la ville d'arrivée du trajet.
 
-
+    virtual bool EstEgal(const Trajet * unTraj) const = 0;
+    // Mode d'emploi : Renvoie vrai si le trajet appelant est egal au trajet
+    // en paramaètre.
 
 //-------------------------------------------- Constructeurs - destructeur
     Trajet ( const Trajet & unTrajet );

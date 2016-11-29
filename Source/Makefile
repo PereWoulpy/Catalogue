@@ -2,9 +2,9 @@
 COMP = g++
 EXEC = Test 
 CFLAGS = -c -Wall7
-LDFLAGS = 
+LDFLAGS =
 SRC = $(wildcard *.cpp)
-OBJ = $(SRC:.cpp = .o)
+OBJ = $(SRC:.cpp=.o)
 HEADS = $(wildcard *.h)
 
 all : $(EXEC)
@@ -14,8 +14,8 @@ $(EXEC) : $(OBJ)
 	$(COMP) -o $@ $^ $(LDFLAGS)
 
 #Liste des dépendance suplémentaire du aux héritages et autres
-TrajetSimple.o : Trajet.h
-TrajetCompose.o : Trajet.h Element.h
+TrajetSimple.o : Trajet.h TrajetSimple.h
+TrajetCompose.o : Trajet.h Element.h TrajetCompose.h
 Catalogue.o : Trajet.h Element.h
 
 #Ajoute les dépendances sur tous les headers

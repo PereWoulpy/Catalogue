@@ -34,15 +34,19 @@ public:
     //
     // Contrat :
     //
-    
-	void Afficher ();
-	// Mode d'emploi : affiche le depart, l'arrivee et le moyen de transport du trajet.
-	
-	const char* getDepart ();
-	// Mode d'emploi : renvoie la ville de départ du trajet.
-	
-	const char* getArrivee ();
+
+    void Afficher () const;
+    // Mode d'emploi : affiche le depart, l'arrivee et le moyen de transport du trajet.
+
+    const char* getDepart () const;
+    // Mode d'emploi : renvoie la ville de départ du trajet.
+
+    const char* getArrivee () const;
     // Mode d'emploi : renvoie la ville d'arrivée du trajet.
+
+    bool EstEgal(const Trajet * unTraj) const;
+    // Mode d'emploi : Renvoie vrai si le trajet appelant est egal au trajet
+    // en paramaètre.
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetSimple ( const TrajetSimple & unTrajetSimple );
@@ -69,9 +73,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-	char* arrivee;
-	char* depart;
-	char* transport;
+    const char* arrivee;
+    const char* depart;
+    const char* transport;
 
 };
 

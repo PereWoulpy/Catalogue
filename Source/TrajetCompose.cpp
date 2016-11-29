@@ -31,40 +31,44 @@ using namespace std;
 
 void TrajetCompose::Ajouter (Trajet* tr)
 {
-	if (last == NULL)
-	{
-		first = new Element(tr);
-		last = first;
-	}
-	else
-	{
-		last->setNext(new Element(tr));
-		last = last->getNext();
-	}
+    if (last == NULL)
+    {
+        first = new Element(tr);
+        last = first;
+    }
+    else
+    {
+        last->setNext(new Element(tr));
+        last = last->getNext();
+    }
 }
 
-void TrajetCompose::Afficher ()
+void TrajetCompose::Afficher () const
 {
-	Element* curseur = first;
-	while (curseur != last)
-	{
-		(curseur->getTraj())->Afficher();
-		cout << " - ";
-		curseur = curseur->getNext();
-	}
-	(curseur->getTraj())->Afficher();
+    Element* curseur = first;
+    while (curseur != last)
+    {
+        (curseur->getTraj())->Afficher();
+        cout << " - ";
+        curseur = curseur->getNext();
+    }
+    (curseur->getTraj())->Afficher();
 }
 
-const char* TrajetCompose::getDepart ()
+const char* TrajetCompose::getDepart () const
 {
-	return (first->getTraj())->getDepart();
+    return (first->getTraj())->getDepart();
 }
 
-const char* TrajetCompose::getArrivee ()
+const char* TrajetCompose::getArrivee () const
 {
-	return (last->getTraj())->getArrivee();
+    return (last->getTraj())->getArrivee();
 }
 
+bool TrajetCompose::EstEgal(const Trajet * unTraj) const
+{
+    return true;
+}
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 // Algorithme :
@@ -100,9 +104,9 @@ TrajetCompose::~TrajetCompose ( )
 Element* temp;
 while (first != last)
 {
-	temp = first;
-	first = temp->getNext();
-	delete temp;
+    temp = first;
+    first = temp->getNext();
+    delete temp;
 }
 delete first;
 

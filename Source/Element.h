@@ -38,12 +38,12 @@ public:
     //void Ajouter(Element* lTr);
     // Mode d'emploi : Initialise le pointeur next vers un autre élément
     
-    Trajet* getTraj();
+    const Trajet* getTraj() const;
     //Récupérer trajet pointé.
     
     void setNext(Element* n);
     
-    Element* getNext();
+    Element* getNext() const;
     //Récupérer le pointeur vers le prochain élément de la liste. 
 
 
@@ -58,7 +58,7 @@ public:
     // Contrat :
     //
 
-    Element (Trajet* tr);
+    Element (const Trajet* tr);
     // Mode d'emploi :
     //
     // Contrat :
@@ -78,7 +78,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 
 Element* next;
-Trajet* traj;
+const Trajet* traj;
 
 };
 

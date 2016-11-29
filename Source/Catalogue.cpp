@@ -31,56 +31,56 @@ using namespace std;
 
 void Catalogue::Ajouter (Trajet* tr)
 {
-	if (last == NULL)
-	{
-		first = new Element(tr);
-		last = first;
-	}
-	else
-	{
-		last->setNext(new Element(tr));
-		last = last->getNext();
-	}
+    if (last == NULL)
+    {
+        first = new Element(tr);
+        last = first;
+    }
+    else
+    {
+        last->setNext(new Element(tr));
+        last = last->getNext();
+    }
 }
 
 void Catalogue::Afficher ()
 {
-	cout << "** CATALOGUE DES TRAJETS DISPONIBLES **"<< endl;
-	Element* curseur = first;
-	int compt = 1;
-	while (curseur != last)
-	{
-		cout << compt << " - ";
-		compt ++;
-		(curseur->getTraj())->Afficher();
-		cout << endl;
-		curseur = curseur->getNext();
-	}
-	cout << compt << " - ";
-	(curseur->getTraj())->Afficher();
-	cout << endl;
+    cout << "** CATALOGUE DES TRAJETS DISPONIBLES **"<< endl;
+    Element* curseur = first;
+    int compt = 1;
+    while (curseur != last)
+    {
+        cout << compt << " - ";
+        compt ++;
+        (curseur->getTraj())->Afficher();
+        cout << endl;
+        curseur = curseur->getNext();
+    }
+    cout << compt << " - ";
+    (curseur->getTraj())->Afficher();
+    cout << endl;
 }
 
 void Catalogue::Rechercher (const char* dep, const char* arr)
 {
 
-	Element* curseur = first;
-	int compt = 0;
-	while (curseur != NULL)
-	{
-		if (strcmp((curseur->getTraj())->getDepart(), dep) == 0 && strcmp((curseur->getTraj())->getArrivee(), arr) == 0)
-		{
-			(curseur->getTraj())->Afficher();
-			cout<< endl;
-			compt ++;
-		}
-		curseur = curseur->getNext();
-	}
-	if (compt == 0)
-	{
-		cout << "Il n'y a pas de trajets disponibles pour votre requete."<<endl;
-	}
-	
+    Element* curseur = first;
+    int compt = 0;
+    while (curseur != NULL)
+    {
+        if (strcmp((curseur->getTraj())->getDepart(), dep) == 0 && strcmp((curseur->getTraj())->getArrivee(), arr) == 0)
+        {
+            (curseur->getTraj())->Afficher();
+            cout<< endl;
+            compt ++;
+        }
+        curseur = curseur->getNext();
+    }
+    if (compt == 0)
+    {
+        cout << "Il n'y a pas de trajets disponibles pour votre requete."<<endl;
+    }
+
 
 }
 
@@ -123,9 +123,9 @@ Catalogue::~Catalogue ( )
 Element* temp;
 while (first != last)
 {
-	temp = first;
-	first = temp->getNext();
-	delete temp;
+    temp = first;
+    first = temp->getNext();
+    delete temp;
 }
 delete first;
 
