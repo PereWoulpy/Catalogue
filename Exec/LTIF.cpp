@@ -85,6 +85,8 @@ void Rechercher(Catalogue & c) {
 int main() {
     
     cout<<"Bonjour, blabla"<<endl;
+    cout<<"Tapez \"bye\" pour quitter, \"disp\" pour afficher le catalogue, "<<endl;
+    cout<<"\"add\" pour ajouter un trajet au catalogue et \"find\" pour une recherche"<<endl;
     char entree[MAX_LENGTH];
     Catalogue cat;
     
