@@ -1,6 +1,7 @@
 #MakeFile du TP sur le catalogue
 COMP = g++
-EXEC = Test 
+EXEC = LTIF
+OBJEX = LTIF.o
 CFLAGS = -c -Wall7
 LDFLAGS =
 SRC = $(wildcard *.cpp)
@@ -19,7 +20,7 @@ TrajetCompose.o : Trajet.h Element.h TrajetCompose.h
 Catalogue.o : Trajet.h Element.h
 
 #Ajoute les dépendances sur tous les headers
-Test.o : $(HEADS)
+$(OBJEX) : $(HEADS)
 
 #Compilation
 %.o : %.cpp %.h

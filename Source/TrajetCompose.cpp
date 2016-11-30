@@ -67,7 +67,7 @@ const char* TrajetCompose::getArrivee () const
 
 bool TrajetCompose::EstEgal(const Trajet * unTraj) const
 {
-    return true;
+    return false;
 }
 //-------------------------------------------- Constructeurs - destructeur
 TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )

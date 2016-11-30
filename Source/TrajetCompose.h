@@ -48,6 +48,9 @@ public:
 
     void Ajouter (Trajet* tr);
     // Ajoute un trajet simple à la fin de la liste.
+    //
+    // Contrat : L'enchainement des différents trajets simples est licite
+    // c'est à dire que l'arrivée de l'un correspond correspond au départ du suivant
 
     bool EstEgal(const Trajet * unTraj) const;
     // Mode d'emploi : Renvoie vrai si le trajet appelant est egal au trajet

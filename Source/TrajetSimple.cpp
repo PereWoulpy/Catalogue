@@ -46,7 +46,7 @@ void TrajetSimple::Afficher () const
 
 bool TrajetSimple::EstEgal(const Trajet * unTraj) const
 {
-    
+    return false;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -67,7 +67,6 @@ TrajetSimple::TrajetSimple (const char* dep, const char* arr, const char* trans)
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-
 arrivee = arr;
 
 depart = dep;

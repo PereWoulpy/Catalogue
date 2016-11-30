@@ -45,20 +45,25 @@ void Catalogue::Ajouter (Trajet* tr)
 
 void Catalogue::Afficher ()
 {
-    cout << "** CATALOGUE DES TRAJETS DISPONIBLES **"<< endl;
-    Element* curseur = first;
-    int compt = 1;
-    while (curseur != last)
-    {
+    if(first == NULL) {
+        cout<<"Le catalogue est pour le moment vide"<<endl;
+    }
+    else {
+        cout << "** CATALOGUE DES TRAJETS DISPONIBLES **"<< endl;
+        Element* curseur = first;
+        int compt = 1;
+        while (curseur != last)
+        {
+            cout << compt << " - ";
+            compt ++;
+            (curseur->getTraj())->Afficher();
+            cout << endl;
+            curseur = curseur->getNext();
+        }
         cout << compt << " - ";
-        compt ++;
         (curseur->getTraj())->Afficher();
         cout << endl;
-        curseur = curseur->getNext();
     }
-    cout << compt << " - ";
-    (curseur->getTraj())->Afficher();
-    cout << endl;
 }
 
 void Catalogue::Rechercher (const char* dep, const char* arr)
