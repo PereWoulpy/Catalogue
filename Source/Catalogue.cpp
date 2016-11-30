@@ -71,6 +71,7 @@ void Catalogue::Rechercher (const char* dep, const char* arr) const
 
     Element* curseur = first;
     int compt = 0;
+    cout<<endl<<"RESULTATS : "<<endl;
     while (curseur != NULL)
     {
         if (strcmp((curseur->getTraj())->getDepart(), dep) == 0 && strcmp((curseur->getTraj())->getArrivee(), arr) == 0)

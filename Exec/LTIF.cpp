@@ -10,7 +10,7 @@ using namespace std;
 const int MAX_LENGTH = 32;
 
 void Creer(Catalogue & c) {
-    cout<<endl<<"**CREATION DE TRAJET**"<<endl<<"Trajet simple (tapez 1) où composé (entrez votre nombre de trajets) : ";
+    cout<<endl<<"**CREATION DE TRAJET**"<<endl<<"Trajet simple (tapez 1) ou composé (entrez votre nombre de trajets) : ";
     int nb;
     cin>>nb;
     
@@ -57,15 +57,15 @@ void Creer(Catalogue & c) {
         delete nouv;
     }
     else {
-        cout<<"Voulvez-vous confirmer ? 0 pour non, 1 pour oui"<<endl;
+        cout<<"Voulvez-vous confirmer ? (0 pour non, 1 pour oui)"<<endl;
         cin>>nb;
         if(nb == 0) {
-            cout<<"Annule"<<endl;
+            cout<<"Annulé."<<endl<<endl;
             delete nouv;
         }
         else {
             c.Ajouter(nouv);
-            cout<<"Trajet Cree"<<endl;
+            cout<<"Trajet créé."<<endl<<endl;
         }
     }
 }
@@ -75,9 +75,9 @@ void Rechercher(Catalogue & c) {
     char dep[MAX_LENGTH];
     char arr[MAX_LENGTH];
     
-    cout<<"Ville de départ?"<<endl;
+    cout<<"Ville de départ : ";
     cin>>dep;
-    cout<<"Ville d'arrivée?"<<endl;
+    cout<<"Ville d'arrivée : ";
     cin>>arr;
     c.Rechercher(dep, arr);
 }
@@ -87,24 +87,26 @@ int main() {
     cout<<"Bonjour, cher utilisateur."<<endl;
     cout<<"**MANUEL D'UTILISATION**"<<endl;
     cout<<"Tapez \"Quitter\" pour quitter, \"Catalogue\" pour afficher le catalogue, "<<endl;
-    cout<<"\"Ajouter\" pour ajouter un trajet au catalogue et \"Chercher trajet\" pour une recherche"<<endl;
+    cout<<"\"Ajouter\" pour ajouter un trajet au catalogue et \"Rechercher trajet\" pour une recherche"<<endl<<endl;
     char entree[MAX_LENGTH];
     Catalogue cat;
     
     cin>>entree;
     while(strcmp("Quitter", entree) !=0) {
         
-        if(strcmp("Afficher", entree) == 0) {
+        if(strcmp("Catalogue", entree) == 0) {
             cout<<endl;
             cat.Afficher();
+            cout<<endl;
         }
         
         if(strcmp("Ajouter", entree) == 0) {
             Creer(cat);
         }
         
-        if(strcmp("Chercher trajet", entree) ==0) {
+        if(strcmp("Rechercher", entree) ==0) {
             Rechercher(cat);
+            cout<<endl;
         }
         cin>>entree;
     }
