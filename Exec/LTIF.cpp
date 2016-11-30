@@ -7,16 +7,18 @@ using namespace std;
 #include "../Source/Element.h"
 #include "../Source/Catalogue.h"
 
-const int MAX_LENGTH = 64;
+const int MAX_LENGTH = 32;
 
 void Creer(Catalogue & c) {
-    cout<<"Creation"<<endl<<"Compo du trajet : ";
+    cout<<"Creation"<<endl<<"Combien de trajet ? : ";
     int nb;
     cin>>nb;
     
     char* dep = new char[MAX_LENGTH];
     char* arr = new char[MAX_LENGTH];
     char* trans = new char[MAX_LENGTH];
+    
+    Trajet* nouv;
     
     if(nb == 1) {
         cout<<"depart"<<endl;
@@ -25,10 +27,10 @@ void Creer(Catalogue & c) {
         cin>>arr;
         cout<<"transport"<<endl;
         cin>>trans;
-        c.Ajouter(new TrajetSimple(dep, arr, trans));
+        nouv = new TrajetSimple(dep, arr, trans);
     }
     else if(nb > 1) {
-        TrajetCompose* nouv = new TrajetCompose();
+        nouv = new TrajetCompose();
         cout<<"depart"<<endl;
         cin>>dep;
         for(int i=1 ; i<nb ; i++) {
@@ -48,10 +50,24 @@ void Creer(Catalogue & c) {
         cout<<"transport"<<endl;
         cin>>trans;
         nouv->Ajouter(new TrajetSimple(dep, arr, trans));
-        
-        c.Ajouter(nouv);
     }
-    cout<<"Creation effectuee"<<endl;
+    
+    if(c.Existe(nouv)) {
+        cout<<"Ce trajet existe déjà dans le catalogue"<<endl;
+        delete nouv;
+    }
+    else {
+        cout<<"Voulvez-vous confirmer ? 0 pour non, 1 pour oui"<<endl;
+        cin>>nb;
+        if(nb == 0) {
+            cout<<"Annule"<<endl;
+            delete nouv;
+        }
+        else {
+            c.Ajouter(nouv);
+            cout<<"Trajet Cree"<<endl;
+        }
+    }
 }
 
 void Rechercher(Catalogue & c) {
@@ -68,7 +84,7 @@ void Rechercher(Catalogue & c) {
 
 int main() {
     
-    cout<<"Bonjour, blabla, bullshit"<<endl;
+    cout<<"Bonjour, blabla"<<endl;
     char entree[MAX_LENGTH];
     Catalogue cat;
     

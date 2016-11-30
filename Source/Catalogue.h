@@ -36,17 +36,19 @@ public:
     // Contrat :
     //
     
-    void Afficher ();
+    void Afficher () const;
     //Mode d'emploi : Afficher les trajets numérotés;
     
     void Ajouter (Trajet* tr);
     // mode d'emploi : Ajoute un trajet simple à la fin de la liste.
     
-    void Rechercher (const char* dep, const char* arr);
+    void Rechercher (const char* dep, const char* arr) const;
     // Mode d'emploi : affiche les trajets disponibles entre les deux villes
     // saisies.
-
-
+    
+    bool Existe (const Trajet* tr) const;
+    //Mode d'emploi : renvoie vrai si le trajet en paramètre existe déjà dans le catalogue
+    
 //------------------------------------------------- Surcharge d'opérateurs
 
 //-------------------------------------------- Constructeurs - destructeur

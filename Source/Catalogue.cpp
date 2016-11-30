@@ -43,7 +43,7 @@ void Catalogue::Ajouter (Trajet* tr)
     }
 }
 
-void Catalogue::Afficher ()
+void Catalogue::Afficher () const
 {
     if(first == NULL) {
         cout<<"Le catalogue est pour le moment vide"<<endl;
@@ -66,7 +66,7 @@ void Catalogue::Afficher ()
     }
 }
 
-void Catalogue::Rechercher (const char* dep, const char* arr)
+void Catalogue::Rechercher (const char* dep, const char* arr) const
 {
 
     Element* curseur = first;
@@ -85,8 +85,18 @@ void Catalogue::Rechercher (const char* dep, const char* arr)
     {
         cout << "Il n'y a pas de trajets disponibles pour votre requete."<<endl;
     }
+}
 
-
+bool Catalogue::Existe (const Trajet* tr) const 
+{
+    Element* curseur = first;
+    while (curseur != NULL) {
+        if(curseur->getTraj()->EstEgal(tr)) {
+            return true;
+        }
+        curseur=curseur->getNext();
+    }
+    return false;
 }
 
 

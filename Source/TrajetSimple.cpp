@@ -49,6 +49,10 @@ bool TrajetSimple::EstEgal(const Trajet * unTraj) const
     return false;
 }
 
+void TrajetSimple::Ajouter (Trajet* tr){
+    
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 // Algorithme :
@@ -83,6 +87,10 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+
+delete [] depart;
+delete [] arrivee;
+delete [] transport;
 
 } //----- Fin de ~TrajetSimple
 
