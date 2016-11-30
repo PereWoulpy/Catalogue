@@ -10,7 +10,7 @@ using namespace std;
 const int MAX_LENGTH = 32;
 
 void Creer(Catalogue & c) {
-    cout<<"Creation"<<endl<<"Combien de trajet ? : ";
+    cout<<endl<<"**CREATION DE TRAJET**"<<endl<<"Trajet simple (tapez 1) où composé (entrez votre nombre de trajets) : ";
     int nb;
     cin>>nb;
     
@@ -21,22 +21,22 @@ void Creer(Catalogue & c) {
     Trajet* nouv;
     
     if(nb == 1) {
-        cout<<"depart"<<endl;
+        cout<<"Ville de départ : ";
         cin>>dep;
-        cout<<"arrivee"<<endl;
+        cout<<"Ville d'arrivée : ";
         cin>>arr;
-        cout<<"transport"<<endl;
+        cout<<"Moyen de transport : ";
         cin>>trans;
         nouv = new TrajetSimple(dep, arr, trans);
     }
     else if(nb > 1) {
         nouv = new TrajetCompose();
-        cout<<"depart"<<endl;
+        cout<<"Ville de départ : ";
         cin>>dep;
         for(int i=1 ; i<nb ; i++) {
-            cout<<"escale "<<i<<endl;
+            cout<<"Ville de l'escale "<<i<<" : ";
             cin>>arr;
-            cout<<"transport"<<endl;
+            cout<<"Moyen de transport : ";
             cin>>trans;
             nouv->Ajouter(new TrajetSimple(dep, arr, trans));
             
@@ -45,9 +45,9 @@ void Creer(Catalogue & c) {
             arr = new char[MAX_LENGTH];
             trans = new char[MAX_LENGTH];
         }
-        cout<<"arrivee"<<endl;
+        cout<<"Ville d'arrivée : ";
         cin>>arr;
-        cout<<"transport"<<endl;
+        cout<<"Moyen de transport : ";
         cin>>trans;
         nouv->Ajouter(new TrajetSimple(dep, arr, trans));
     }
@@ -71,42 +71,44 @@ void Creer(Catalogue & c) {
 }
 
 void Rechercher(Catalogue & c) {
-    cout<<"Recherche"<<endl;
+    cout<<endl<<"**RECHERCHE**"<<endl;
     char dep[MAX_LENGTH];
     char arr[MAX_LENGTH];
     
-    cout<<"depart"<<endl;
+    cout<<"Ville de départ?"<<endl;
     cin>>dep;
-    cout<<"arrivee"<<endl;
+    cout<<"Ville d'arrivée?"<<endl;
     cin>>arr;
     c.Rechercher(dep, arr);
 }
 
 int main() {
     
-    cout<<"Bonjour, blabla"<<endl;
-    cout<<"Tapez \"bye\" pour quitter, \"disp\" pour afficher le catalogue, "<<endl;
-    cout<<"\"add\" pour ajouter un trajet au catalogue et \"find\" pour une recherche"<<endl;
+    cout<<"Bonjour, cher utilisateur."<<endl;
+    cout<<"**MANUEL D'UTILISATION**"<<endl;
+    cout<<"Tapez \"Quitter\" pour quitter, \"Catalogue\" pour afficher le catalogue, "<<endl;
+    cout<<"\"Ajouter\" pour ajouter un trajet au catalogue et \"Chercher trajet\" pour une recherche"<<endl;
     char entree[MAX_LENGTH];
     Catalogue cat;
     
     cin>>entree;
-    while(strcmp("bye", entree) !=0) {
+    while(strcmp("Quitter", entree) !=0) {
         
-        if(strcmp("disp", entree) == 0) {
+        if(strcmp("Afficher", entree) == 0) {
+            cout<<endl;
             cat.Afficher();
         }
         
-        if(strcmp("add", entree) == 0) {
+        if(strcmp("Ajouter", entree) == 0) {
             Creer(cat);
         }
         
-        if(strcmp("find", entree) ==0) {
+        if(strcmp("Chercher trajet", entree) ==0) {
             Rechercher(cat);
         }
         cin>>entree;
     }
     
-    cout<<"Au revoir"<<endl;
+    cout<<"Au revoir, et merci."<<endl;
     return 0;
 }

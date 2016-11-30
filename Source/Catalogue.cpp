@@ -46,7 +46,7 @@ void Catalogue::Ajouter (Trajet* tr)
 void Catalogue::Afficher () const
 {
     if(first == NULL) {
-        cout<<"Le catalogue est pour le moment vide"<<endl;
+        cout<<"Le catalogue est pour le moment vide. Il ne tiens qu'à vous de le remplir."<<endl;
     }
     else {
         cout << "** CATALOGUE DES TRAJETS DISPONIBLES **"<< endl;
