@@ -2,10 +2,10 @@ using namespace std;
 
 #include <iostream>
 #include <cstring>
-#include "TrajetSimple.h"
-#include "TrajetCompose.h"
-#include "Element.h"
-#include "Catalogue.h"
+#include "../Source/TrajetSimple.h"
+#include "../Source/TrajetCompose.h"
+#include "../Source/Element.h"
+#include "../Source/Catalogue.h"
 
 
 void TestTrajetSimple() {

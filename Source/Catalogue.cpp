@@ -50,6 +50,7 @@ void Catalogue::Afficher () const
     }
     else {
         cout << "** CATALOGUE DES TRAJETS DISPONIBLES **"<< endl;
+        
         Element* curseur = first;
         int compt = 1;
         while (curseur != last)
@@ -100,6 +101,17 @@ bool Catalogue::Existe (const Trajet* tr) const
     return false;
 }
 
+int Catalogue::getNbTrajets () const {
+    int res = 0;
+    
+    Element* curseur = first;
+    while(curseur != NULL) {
+        curseur = curseur->getNext();
+        res++;
+    }
+    
+    return res;
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -122,8 +134,8 @@ Catalogue::Catalogue ( )
     cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
 
-first = NULL;
-last = NULL;
+    first = NULL;
+    last = NULL;
 
 } //----- Fin de Catalogue
 
@@ -136,15 +148,14 @@ Catalogue::~Catalogue ( )
     cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
 
-Element* temp;
-while (first != last)
-{
-    temp = first;
-    first = temp->getNext();
-    delete temp;
-}
-delete first;
-
+    Element* temp;
+    while (first != last)
+    {
+        temp = first;
+        first = temp->getNext();
+        delete temp;
+    }
+    delete first;
 } //----- Fin de ~Catalogue
 
 

@@ -49,10 +49,6 @@ bool TrajetSimple::EstEgal(const Trajet * unTraj) const
     return false;
 }
 
-void TrajetSimple::Ajouter (Trajet* tr){
-    
-}
-
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
 // Algorithme :
@@ -71,14 +67,16 @@ TrajetSimple::TrajetSimple (const char* dep, const char* arr, const char* trans)
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-arrivee = arr;
+arrivee = new char[strlen(arr)+1];
+strcpy(arrivee, arr);
 
-depart = dep;
+depart = new char[strlen(dep)+1];
+strcpy(depart, dep);
 
-transport = trans;
+transport = new char[strlen(trans)+1];
+strcpy(transport, trans);
 
 } //----- Fin de TrajetSimple
-
 
 TrajetSimple::~TrajetSimple ( )
 // Algorithme :

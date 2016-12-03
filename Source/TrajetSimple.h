@@ -47,8 +47,6 @@ public:
     bool EstEgal(const Trajet * unTraj) const;
     // Mode d'emploi : Renvoie vrai si le trajet appelant est egal au trajet
     // en paramaètre.
-    
-    void Ajouter (Trajet* tr);
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetSimple ( const TrajetSimple & unTrajetSimple );
@@ -75,9 +73,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    const char* arrivee;
-    const char* depart;
-    const char* transport;
+    char* arrivee;
+    char* depart;
+    char* transport;
 
 };
 

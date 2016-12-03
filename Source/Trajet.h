@@ -34,9 +34,7 @@ public:
     // Contrat : L'affichage tiens compte de la nature de l'objet, composé
     // ou simple. 
     
-    virtual void Ajouter (Trajet* tr) = 0;
-    
-    virtual const char* getDepart () const = 0;
+    virtual const char * getDepart () const = 0;
     // Mode d'emploi : renvoie la ville de départ du trajet.
     
     virtual const char* getArrivee () const = 0;

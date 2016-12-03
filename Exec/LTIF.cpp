@@ -10,15 +10,14 @@ using namespace std;
 const int MAX_LENGTH = 32;
 
 void Creer(Catalogue & c) {
-    cout<<endl<<"**CREATION DE TRAJET**"<<endl<<"Trajet simple (tapez 1) ou composé (entrez votre nombre de trajets) : ";
+    cout<<endl<<"**CREATION DE TRAJET**"<<endl;
+    cout<<"Trajet simple (tapez 1) ou composé (entrez votre nombre de trajets) : ";
     int nb;
     cin>>nb;
     
-    char* dep = new char[MAX_LENGTH];
-    char* arr = new char[MAX_LENGTH];
-    char* trans = new char[MAX_LENGTH];
-    
-    Trajet* nouv;
+    char dep[MAX_LENGTH];
+    char arr[MAX_LENGTH];
+    char trans[MAX_LENGTH];
     
     if(nb == 1) {
         cout<<"Ville de départ : ";
@@ -27,10 +26,21 @@ void Creer(Catalogue & c) {
         cin>>arr;
         cout<<"Moyen de transport : ";
         cin>>trans;
-        nouv = new TrajetSimple(dep, arr, trans);
+        TrajetSimple* nouv = new TrajetSimple(dep, arr, trans);
+        
+        cout<<"Voulvez-vous confirmer ? (0 pour non, 1 pour oui)"<<endl;
+        cin>>nb;
+        if(nb == 0) {
+            cout<<"Annulé."<<endl<<endl;
+            delete nouv;
+        }
+        else {
+            c.Ajouter(nouv);
+            cout<<"Trajet créé."<<endl<<endl;
+        }
     }
     else if(nb > 1) {
-        nouv = new TrajetCompose();
+        TrajetCompose* nouv = new TrajetCompose();
         cout<<"Ville de départ : ";
         cin>>dep;
         for(int i=1 ; i<nb ; i++) {
@@ -40,23 +50,14 @@ void Creer(Catalogue & c) {
             cin>>trans;
             nouv->Ajouter(new TrajetSimple(dep, arr, trans));
             
-            dep = new char[MAX_LENGTH];
             strcpy(dep, arr);
-            arr = new char[MAX_LENGTH];
-            trans = new char[MAX_LENGTH];
         }
         cout<<"Ville d'arrivée : ";
         cin>>arr;
         cout<<"Moyen de transport : ";
         cin>>trans;
         nouv->Ajouter(new TrajetSimple(dep, arr, trans));
-    }
-    
-    if(c.Existe(nouv)) {
-        cout<<"Ce trajet existe déjà dans le catalogue"<<endl;
-        delete nouv;
-    }
-    else {
+        
         cout<<"Voulvez-vous confirmer ? (0 pour non, 1 pour oui)"<<endl;
         cin>>nb;
         if(nb == 0) {

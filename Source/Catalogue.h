@@ -47,7 +47,10 @@ public:
     // saisies.
     
     bool Existe (const Trajet* tr) const;
-    //Mode d'emploi : renvoie vrai si le trajet en paramètre existe déjà dans le catalogue
+    // Mode d'emploi : renvoie vrai si le trajet en paramètre existe déjà dans le catalogue
+    
+    int getNbTrajets () const;
+    // Mode d'emploi ; retourne le nombre de trajets stockés dans le catalogue
     
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -85,4 +88,3 @@ Element* last;
 //-------------------------------- Autres définitions dépendantes de <Catalogue>
 
 #endif // CATALOGUE_H
-
