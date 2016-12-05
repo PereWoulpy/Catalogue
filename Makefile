@@ -1,35 +1,32 @@
 #MakeFile du TP sur le catalogue
 COMP=g++
-EXEC_DIR=Exec
 EXEC=LTIF
-OBJEX=$(EXEC_DIR)/LTIF.o
+OBJEX=LTIF.o
 CFLAGS=-c -Wall7
 LDFLAGS=
-SRC_DIR=Source
-SRC=$(wildcard $(SRC_DIR)/*.cpp)
+SRC=$(wildcard *.cpp)
 OBJ=$(SRC:.cpp=.o)
-HEADS=$(wildcard $(SRC_DIR)/*.h)
+HEADS=$(wildcard *.h)
 
 all: $(EXEC)
 
-#Edition des liens pour crer l'exécutable
+#Edition des liens pour creer l'exécutable
 $(EXEC): $(OBJ) $(OBJEX)
 	$(COMP) -o $@ $^ $(LDFLAGS)
 
-#Liste des dépendance suplémentaire du aux héritages et autres
-Source/TrajetSimple.o: Source/Trajet.h Source/TrajetSimple.h
-Source/TrajetCompose.o: Source/Trajet.h Source/Element.h Source/TrajetCompose.h
-Source/Catalogue.o: Source/Trajet.h Source/Element.h
-Source/Element.o:  Source/Trajet.h
+#Liste des dependances suplementaire dues aux heritages et autres
+TrajetSimple.o: Trajet.h TrajetSimple.h
+TrajetCompose.o: Trajet.h Element.h TrajetCompose.h
+Catalogue.o: Trajet.h Element.h
+Element.o:  Trajet.h
 
-#Ajoute les dépendances sur tous les headers
+#Ajoute les dependances sur tous les headers
 $(OBJEX): $(HEADS)
 
 #Compilation
 %.o: %.cpp %.h
 	$(COMP) -o $@ -c $<
 
-#Supprime les binaires translatables intermédiares
+#Supprime les binaires translatables
 clean:
-	rm -rf $(SRC_DIR)/*.o
-	rm -rf $(EXEC_DIR)/*.o
+	rm -rf *.o
